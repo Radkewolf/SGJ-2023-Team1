@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Rigidbody _Rigidbody;
-    public int ForceMultiplier;
+    public int JumpForceMultiplier;
+    public int StrafeMultiplier;
+    public int ForwardMultiplayer;
+    public int BackwardMultiplayer;
 
     private bool CanJump;
     // Start is called before the first frame update
@@ -19,25 +22,25 @@ public class PlayerController : MonoBehaviour
     {
         if(Input.GetKey(KeyCode.W))
         {
-            transform.position += transform.forward * Time.deltaTime;
+            transform.position += transform.forward * ForwardMultiplayer * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            transform.position -= transform.forward * Time.deltaTime;
+            transform.position -= transform.forward * BackwardMultiplayer * Time.deltaTime;
         }
 
         if(Input.GetKey(KeyCode.D))
         {
-            transform.position += transform.right * Time.deltaTime;
+            transform.position += transform.right * StrafeMultiplier * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            transform.position -= transform.right * Time.deltaTime;
+            transform.position -= transform.right * StrafeMultiplier * Time.deltaTime;
         }
 
         if(Input.GetKeyDown(KeyCode.Space) && CanJump)
         {
-            _Rigidbody.AddForce(Vector3.up * ForceMultiplier);
+            _Rigidbody.AddForce(Vector3.up * JumpForceMultiplier);
         }
     }
 

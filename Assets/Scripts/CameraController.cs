@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     public GameObject Player;
     void Start()
     {
-        
+        Player = transform.parent.gameObject;
     }
 
     // Update is called once per frame
