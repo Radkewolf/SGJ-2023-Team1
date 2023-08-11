@@ -100,7 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Rigidbody: {fileID: 0}
-  ForceMultiplier: 500
+  JumpForceMultiplier: 200
+  StrafeMultiplier: 1
+  ForwardMultiplayer: 1
+  BackwardMultiplayer: 1
 --- !u!54 &8464228021996667531
 Rigidbody:
   m_ObjectHideFlags: 0
