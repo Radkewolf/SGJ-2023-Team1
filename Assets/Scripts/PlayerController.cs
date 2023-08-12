@@ -7,7 +7,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public Rigidbody _Rigidbody;
 
-    public int AccelerationMultiplier;
+    [Range(0f, 1f)]
+    public float AccelerationMultiplier;
     public int JumpForceMultiplier;
     //public int StrafeMultiplier;
     //public int ForwardMultiplier;
