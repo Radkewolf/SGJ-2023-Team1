@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [HideInInspector]
     public Rigidbody _Rigidbody;
+    [HideInInspector]
+    public GameObject CameraHolder;
 
     [Range(0f, 1f)]
     public float AccelerationMultiplier;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _Rigidbody = GetComponent<Rigidbody>();
+        CameraHolder = transform.GetChild(0).gameObject;
         GameMaster.Player = this;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -130,10 +133,14 @@ public class PlayerController : MonoBehaviour
         var yDelta = Input.GetAxis("Mouse Y");
         if (yDelta != 0)
         {
-            GameMaster.Camera.transform.RotateAround(transform.position + (Vector3.up * 2), Vector3.right, yDelta * LookMultiplier * Time.deltaTime);
+            Vector3 currentRotation = CameraHolder.transform.eulerAngles;
+            currentRotation.x += yDelta * Time.deltaTime * LookMultiplier;
 
-            Vector3 dir = (GameMaster.Camera.transform.position - transform.position).normalized;
-            GameMaster.Camera.transform.position = transform.position + dir * 5;
+            if (currentRotation.x > 180)
+                currentRotation.x -= 360;
+
+            currentRotation.x = Mathf.Clamp(currentRotation.x, 0, 45);
+            CameraHolder.transform.eulerAngles = currentRotation;
         }
     }
 
