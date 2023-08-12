@@ -142,7 +142,8 @@ MonoBehaviour:
   ForwardMaxSpeed: 0.03
   BackwardMaxSpeed: 0.03
   LookMultiplier: 400
-  TorchPosition: {x: -0.75, y: 0.45, z: 0.6}
+  ItemPosition: {x: 0.75, y: 0.2, z: 0}
+  Equipment: {fileID: 0}
 --- !u!54 &8464228021996667531
 Rigidbody:
   m_ObjectHideFlags: 0

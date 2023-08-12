@@ -25,8 +25,9 @@ public class PlayerController : MonoBehaviour
     public float BackwardMaxSpeed;
     public float LookMultiplier;
 
-    public Vector3 TorchPosition;
+    public Vector3 ItemPosition;
 
+    public Equipable Equipment;
     private bool CanJump;
     private float MovementVectorS;
     private float MovementVectorF;
@@ -168,10 +169,17 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Mouse0) && Cursor.lockState == CursorLockMode.Locked)
         {
-            var interactable = InteractableObject.RaycastForObject();
-            if (interactable != null)
+            if(Equipment != null)
             {
-                interactable.Interact();
+                Equipment.ItemAction();
+            }
+            else
+            {
+                var interactable = InteractableObject.RaycastForObject();
+                if (interactable != null)
+                {
+                    interactable.Interact();
+                }
             }
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1))

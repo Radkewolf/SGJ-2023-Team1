@@ -13,6 +13,7 @@ public abstract class InteractableObject : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit, 17f, layer_mask))
         {
+            Debug.Log(hit.collider.gameObject.name);
             var interactable = hit.collider.gameObject.GetComponent<InteractableObject>();
             return interactable;
         }

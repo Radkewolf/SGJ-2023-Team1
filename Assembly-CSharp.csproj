@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Interactable\InteractableObject.cs" />
-    <Compile Include="Assets\Scripts\Interactable\Torch.cs" />
+    <Compile Include="Assets\Scripts\Interactable\Equipable.cs" />
     <Compile Include="Assets\Scripts\GameMaster.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Interactable\PickUpable.cs" />
