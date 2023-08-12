@@ -65,8 +65,12 @@
     <Compile Include="Assets\Scripts\Interactable\PickUpable.cs" />
     <Compile Include="Assets\Scripts\SpikeRow.cs" />
     <Compile Include="Assets\Scripts\Interactable\InteractableUIDisplay.cs" />
+    <Compile Include="Assets\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\StageWall.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\HandPainted Lava Textures\Documentation\Documentation.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
