@@ -48,7 +48,15 @@ public class PlayerController : MonoBehaviour
         Interact();
     }
 
-    private void OnCollisionStay(Collision collision)
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Plane_invisible")
+        {
+            collision.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
+    }
+
+    void OnCollisionStay(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
         {
