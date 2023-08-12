@@ -46,13 +46,18 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            Debug.Log("Can Jump");
             CanJump = true;
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        CanJump = false;
+        if (collision.gameObject.tag == "Ground")
+        {
+            Debug.Log("Cannot Jump");
+            CanJump = false;
+        }
     }
     #endregion
 
