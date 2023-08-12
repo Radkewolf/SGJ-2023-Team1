@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.10080631, g: 0.1146851, b: 0.1627202, a: 1}
+  m_IndirectSpecularColor: {r: 0.0054002507, g: 0.00614369, b: 0.008717388, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4046,6 +4046,10 @@ PrefabInstance:
     - target: {fileID: 8557547408427416649, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
       propertyPath: m_Name
       value: PickUpCube (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557547408427416649, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -15873,6 +15877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUpCube (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8557547408427416649, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17601,15 +17609,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5454138322319010845, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5454138322319010845, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5454138322319010845, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5454138322319010845, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22655,6 +22663,10 @@ PrefabInstance:
     - target: {fileID: 8557547408427416649, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
       propertyPath: m_Name
       value: PickUpCube (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557547408427416649, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38399,6 +38411,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 0}
+  isGlobal: 0
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!4 &1643578470
 Transform:
   m_ObjectHideFlags: 0
@@ -42749,6 +42766,10 @@ PrefabInstance:
     - target: {fileID: 8557547408427416649, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
       propertyPath: m_Name
       value: PickUpCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557547408427416649, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -49890,6 +49911,10 @@ PrefabInstance:
     - target: {fileID: 8557547408427416649, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
       propertyPath: m_Name
       value: PickUpCube (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557547408427416649, guid: fc7ddc5e46c44a44ba38c02739722d35, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
