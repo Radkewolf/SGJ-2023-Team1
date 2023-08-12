@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody _Rigidbody;
     [HideInInspector]
     public GameObject CameraHolder;
+    [HideInInspector]
+    public GameObject EffectsHolder;
 
     [Range(0f, 1f)]
     public float AccelerationMultiplier;
@@ -38,6 +40,7 @@ public class PlayerController : MonoBehaviour
     {
         _Rigidbody = GetComponent<Rigidbody>();
         CameraHolder = transform.GetChild(0).gameObject;
+        EffectsHolder = transform.GetChild(1).gameObject;
         GameMaster.Player = this;
         Cursor.lockState = CursorLockMode.Locked;
         CurrentJumpForce = BaseJumpForceMultiplier;

@@ -65,6 +65,7 @@
     <Compile Include="Assets\Scripts\Interactable\PickUpable.cs" />
     <Compile Include="Assets\Scripts\Interactable\InteractableUIDisplay.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\StageWall.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
