@@ -7,12 +7,13 @@ public class CameraController : MonoBehaviour
     public GameObject Player;
     void Start()
     {
+        GameMaster.Camera = this;
         Player = transform.parent.gameObject;
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        transform.position = Player.transform.position - (Player.transform.forward * 5) + (Vector3.up * 2);
+        transform.LookAt(Player.transform.position);
     }
 }
