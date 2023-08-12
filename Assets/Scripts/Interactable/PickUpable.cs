@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUpable : MonoBehaviour, IInteractableObject
+public class PickUpable : InteractableObject
 {
     private bool PickedUp;
     private Rigidbody _Rigidbody;
@@ -17,7 +17,7 @@ public class PickUpable : MonoBehaviour, IInteractableObject
     {
 
     }
-    public void Interact()
+    public override void Interact()
     {
         if (PickedUp)
         {

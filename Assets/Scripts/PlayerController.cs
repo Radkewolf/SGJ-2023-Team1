@@ -149,13 +149,10 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Mouse0) && Cursor.lockState == CursorLockMode.Locked)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit))
+            var interactable = InteractableObject.RaycastForObject();
+            if (interactable != null)
             {
-                var interactable = hit.collider.gameObject.GetComponent<IInteractableObject>();
-                if (interactable != null)
-                    interactable.Interact();
+                interactable.Interact();
             }
         }
         else if (Input.GetKeyUp(KeyCode.Mouse1))
