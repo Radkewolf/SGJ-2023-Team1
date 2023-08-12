@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class PlayerController : MonoBehaviour
     public GameObject CameraHolder;
     [HideInInspector]
     public GameObject EffectsHolder;
+    [HideInInspector]
+    public bool IsDead;
+
+    public GameObject DeadCanvas;
 
     [Range(0f, 1f)]
     public float AccelerationMultiplier;
@@ -48,6 +54,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (IsDead)
+            return;
         Movement();
         Interact();
     }
@@ -57,6 +65,11 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.name == "Plane_invisible")
         {
             collision.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
+
+        if (collision.gameObject.tag == "Death" && !IsDead)
+        {
+            Die();
         }
     }
 
@@ -197,5 +210,24 @@ public class PlayerController : MonoBehaviour
     public void SetJump(bool jump)
     {
         CanJump = jump;
+    }
+
+    private void Die()
+    {
+        IsDead = true;
+        Instantiate(DeadCanvas);
+        StartCoroutine(LoadYourAsyncScene());
+    }
+
+    IEnumerator LoadYourAsyncScene()
+    {
+        yield return new WaitForSeconds(5f);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
 }

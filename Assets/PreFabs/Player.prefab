@@ -136,6 +136,8 @@ MonoBehaviour:
   _Rigidbody: {fileID: 0}
   CameraHolder: {fileID: 0}
   EffectsHolder: {fileID: 0}
+  IsDead: 0
+  DeadCanvas: {fileID: 3897870534266625107, guid: adbb9c8257bac5943a01d21cf8bff0f0, type: 3}
   AccelerationMultiplier: 0.5
   BaseJumpForceMultiplier: 400
   JumpForceMultiplierSpeedIncrease: 100

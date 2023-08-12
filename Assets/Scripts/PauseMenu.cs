@@ -15,7 +15,10 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
+        if (GameMaster.Player.IsDead)
+            return;
+
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
             Image.enabled = !Image.enabled;
             if(Image.enabled)
