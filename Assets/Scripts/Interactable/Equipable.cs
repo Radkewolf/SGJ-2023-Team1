@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Equipable : InteractableObject
 {
+    public GameObject IntactModel;
+    public GameObject BrokenModel;
+
     bool IsEquipped;
     Collider _Collider;
     Rigidbody _Rigidbody;
@@ -36,6 +39,8 @@ public class Equipable : InteractableObject
             UpdateState();
             if(State == 0)
             {
+                IntactModel.SetActive(false);
+                BrokenModel.SetActive(true);
                 DropItem();
             }
         }
