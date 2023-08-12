@@ -104,6 +104,8 @@ MonoBehaviour:
   StrafeMultiplier: 1
   ForwardMultiplayer: 1
   BackwardMultiplayer: 1
+  LookMultiplier: 20
+  TorchPosition: {x: 0, y: 0, z: 0}
 --- !u!54 &8464228021996667531
 Rigidbody:
   m_ObjectHideFlags: 0
