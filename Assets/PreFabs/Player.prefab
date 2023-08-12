@@ -100,12 +100,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Rigidbody: {fileID: 0}
+  AccelerationMultiplier: 1
   JumpForceMultiplier: 200
-  StrafeMultiplier: 1
-  ForwardMultiplayer: 1
-  BackwardMultiplayer: 1
-  LookMultiplier: 20
-  TorchPosition: {x: 0, y: 0, z: 0}
+  StrafeMaxSpeed: 0.2
+  ForwardMaxSpeed: 0.3
+  BackwardMaxSpeed: 0.2
+  LookMultiplier: 100
+  TorchPosition: {x: -0.75, y: 0.45, z: 0.6}
 --- !u!54 &8464228021996667531
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &9183283369304395995
 BoxCollider:

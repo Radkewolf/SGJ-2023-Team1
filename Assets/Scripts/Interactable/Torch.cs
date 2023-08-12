@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Torch : MonoBehaviour, IInteractableObject
 {
+    Collider _Collider;
+    void Start()
+    {
+        _Collider = GetComponent<Collider>();
+    }
+
     public void Interact()
     {
         transform.parent = GameMaster.Player.transform;
-        transform.position = GameMaster.Player.TorchPosition;
+        transform.localPosition = GameMaster.Player.TorchPosition;
+        _Collider.enabled = false;
     }
 }
