@@ -63,6 +63,7 @@
     <Compile Include="Assets\Scripts\GameMaster.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Interactable\PickUpable.cs" />
+    <Compile Include="Assets\Scripts\SpikeRow.cs" />
     <Compile Include="Assets\Scripts\Interactable\InteractableUIDisplay.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\StageWall.cs" />
