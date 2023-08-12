@@ -5,6 +5,7 @@ using UnityEngine;
 public class StageWall : MonoBehaviour
 {
     private AudioSource Source;
+    private bool Activated;
 
     private void Start()
     {
@@ -13,8 +14,9 @@ public class StageWall : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.name == "Player")
+        if(!Activated && other.gameObject.name == "Player")
         {
+            Activated = true;
             StartEffect();
             StartCoroutine(AudioQue());
         }
@@ -32,6 +34,7 @@ public class StageWall : MonoBehaviour
     }
     IEnumerator AudioQue()
     {
+        GameMaster.Mixer.Pause();
         Source.Play();
         yield return new WaitForSeconds(1.5f);
         PlayVoiceLine();

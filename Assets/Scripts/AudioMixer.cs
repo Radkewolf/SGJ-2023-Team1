@@ -14,6 +14,7 @@ public class AudioMixer : MonoBehaviour
     {
         Audio = GetComponent<AudioSource>();
         GameMaster.Mixer = this;
+        StartAudio();
     }
 
     public void StartAudio()
