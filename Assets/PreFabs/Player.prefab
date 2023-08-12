@@ -135,11 +135,13 @@ MonoBehaviour:
   _Rigidbody: {fileID: 0}
   CameraHolder: {fileID: 0}
   AccelerationMultiplier: 0.5
-  JumpForceMultiplier: 400
+  BaseJumpForceMultiplier: 400
+  JumpForceMultiplierSpeedIncrease: 100
+  MaxJumpForceMultiplier: 800
   StrafeMaxSpeed: 0.03
   ForwardMaxSpeed: 0.03
   BackwardMaxSpeed: 0.03
-  LookMultiplier: 100
+  LookMultiplier: 400
   TorchPosition: {x: -0.75, y: 0.45, z: 0.6}
 --- !u!54 &8464228021996667531
 Rigidbody:

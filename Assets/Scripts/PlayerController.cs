@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour
 
     [Range(0f, 1f)]
     public float AccelerationMultiplier;
-    public int JumpForceMultiplier;
+    public int BaseJumpForceMultiplier;
+    public int JumpForceMultiplierSpeedIncrease;
+    public int MaxJumpForceMultiplier;
     //public int StrafeMultiplier;
     //public int ForwardMultiplier;
     //public int BackwardMultiplier;
@@ -28,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private bool CanJump;
     private float MovementVectorS;
     private float MovementVectorF;
+    private float CurrentJumpForce;
 
     #region MonoBehaviour
     void Start()
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour
         CameraHolder = transform.GetChild(0).gameObject;
         GameMaster.Player = this;
         Cursor.lockState = CursorLockMode.Locked;
+        CurrentJumpForce = BaseJumpForceMultiplier;
     }
 
     void Update()
@@ -44,7 +48,15 @@ public class PlayerController : MonoBehaviour
         Interact();
     }
 
-    private void OnCollisionStay(Collision collision)
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.name == "Plane_invisible")
+        {
+            collision.gameObject.GetComponent<MeshRenderer>().enabled = true;
+        }
+    }
+
+    void OnCollisionStay(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
         {
@@ -120,9 +132,16 @@ public class PlayerController : MonoBehaviour
         //    transform.position -= transform.right * StrafeMultiplier * Time.deltaTime;
         //}
 
-        if (Input.GetKeyDown(KeyCode.Space) && CanJump)
+        if (Input.GetKey(KeyCode.Space) && CanJump)
         {
-            _Rigidbody.AddForce(Vector3.up * JumpForceMultiplier);
+            CurrentJumpForce += JumpForceMultiplierSpeedIncrease * Time.deltaTime;
+            CurrentJumpForce = CurrentJumpForce > MaxJumpForceMultiplier ? MaxJumpForceMultiplier : CurrentJumpForce;
+            Debug.Log(CurrentJumpForce);
+        }
+        else if(Input.GetKeyUp(KeyCode.Space) && CanJump)
+        {
+            _Rigidbody.AddForce(Vector3.up * CurrentJumpForce);
+            CurrentJumpForce = BaseJumpForceMultiplier;
         }
 
         var xDelta = Input.GetAxis("Mouse X");
@@ -135,7 +154,7 @@ public class PlayerController : MonoBehaviour
         if (yDelta != 0)
         {
             Vector3 currentRotation = CameraHolder.transform.eulerAngles;
-            currentRotation.x += yDelta * Time.deltaTime * LookMultiplier;
+            currentRotation.x -= yDelta * Time.deltaTime * LookMultiplier;
 
             if (currentRotation.x > 180)
                 currentRotation.x -= 360;
