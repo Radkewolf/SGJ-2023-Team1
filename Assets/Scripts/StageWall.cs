@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class StageWall : MonoBehaviour
 {
-    public AudioClip Audio;
+    private AudioSource Source;
+
+    private void Start()
+    {
+        Source = GetComponent<AudioSource>();
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.name == "Player")
         {
-            PlayVoiceLine();
             StartEffect();
-            Destroy(gameObject);
+            StartCoroutine(AudioQue());
         }
     }
 
@@ -25,5 +29,14 @@ public class StageWall : MonoBehaviour
     {
         GameMaster.Player.EffectsHolder.transform.GetChild(0).gameObject.SetActive(true);
         GameMaster.Player.EffectsHolder.transform.GetChild(1).gameObject.SetActive(true);
+    }
+    IEnumerator AudioQue()
+    {
+        Source.Play();
+        yield return new WaitForSeconds(1.5f);
+        PlayVoiceLine();
+        yield return new WaitForSeconds(1f);
+        GameMaster.Mixer.NextSong();
+        Destroy(gameObject);
     }
 }
