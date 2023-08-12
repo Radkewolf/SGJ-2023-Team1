@@ -24,14 +24,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1649767607773550627}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.043619405, y: 0, z: 0, w: 0.9990483}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5298902152489474124}
   m_Father: {fileID: 6473341731416116934}
-  m_LocalEulerAnglesHint: {x: -5, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3410843393343947330
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ MonoBehaviour:
   _Rigidbody: {fileID: 0}
   CameraHolder: {fileID: 0}
   AccelerationMultiplier: 0.5
-  JumpForceMultiplier: 200
+  JumpForceMultiplier: 400
   StrafeMaxSpeed: 0.02
   ForwardMaxSpeed: 0.02
   BackwardMaxSpeed: 0.02

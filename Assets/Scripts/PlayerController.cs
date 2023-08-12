@@ -44,22 +44,23 @@ public class PlayerController : MonoBehaviour
         Interact();
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
+        foreach (ContactPoint contact in collision.contacts)
         {
-            Debug.Log("Can Jump");
-            CanJump = true;
+            // Check if the contact normal is upwards. This implies the player is on top of the cube.
+            if (contact.normal.y > 0.9f)  // The value 0.9f ensures that only surfaces that are almost completely upward will enable jumping.
+            {
+                Debug.Log("Can Jump");
+                CanJump = true;
+            }
         }
     }
 
     void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.tag == "Ground")
-        {
-            Debug.Log("Cannot Jump");
-            CanJump = false;
-        }
+        Debug.Log("Cannot Jump");
+        CanJump = false;
     }
     #endregion
 
@@ -106,9 +107,9 @@ public class PlayerController : MonoBehaviour
         transform.Translate(movement, Space.World);
         if(MovementVectorF != 0)
         {
-            Debug.Log(transform.forward);
-            Debug.Log($"MovementVectorF {MovementVectorF}");
-            Debug.Log($"movement {movement}");
+            //Debug.Log(transform.forward);
+            //Debug.Log($"MovementVectorF {MovementVectorF}");
+            //Debug.Log($"movement {movement}");
         }
         //if (Input.GetKey(KeyCode.D))
         //{
@@ -146,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        if(Input.GetKeyUp(KeyCode.Mouse0))
+        if(Input.GetKeyUp(KeyCode.Mouse0) && Cursor.lockState == CursorLockMode.Locked)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -157,5 +158,17 @@ public class PlayerController : MonoBehaviour
                     interactable.Interact();
             }
         }
+        else if(Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+        }
+    }
+
+    public void SetJump(bool jump)
+    {
+        CanJump = jump;
     }
 }

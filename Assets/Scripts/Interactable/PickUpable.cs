@@ -5,10 +5,11 @@ using UnityEngine;
 public class PickUpable : MonoBehaviour, IInteractableObject
 {
     private bool PickedUp;
+    private Rigidbody _Rigidbody;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _Rigidbody = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -22,11 +23,18 @@ public class PickUpable : MonoBehaviour, IInteractableObject
         {
             transform.parent = null;
             PickedUp = false;
+            //_Rigidbody.isKinematic = false;
+            _Rigidbody.useGravity = true;
+            _Rigidbody.constraints = RigidbodyConstraints.None;
+            //_Rigidbody = true;
         }
         else
         {
             transform.parent = GameMaster.Player.CameraHolder.transform;
             PickedUp = true;
+            //_Rigidbody.isKinematic = true;
+            _Rigidbody.useGravity = false;
+            _Rigidbody.constraints = RigidbodyConstraints.FreezeAll;
         }
     }
 }
