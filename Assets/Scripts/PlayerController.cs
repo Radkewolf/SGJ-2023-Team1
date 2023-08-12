@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     public Vector3 TorchPosition;
 
     private bool CanJump;
-    private float MovementVectorX;
-    private float MovementVectorZ;
+    private float MovementVectorS;
+    private float MovementVectorF;
 
     #region MonoBehaviour
     void Start()
@@ -63,62 +63,51 @@ public class PlayerController : MonoBehaviour
 
     private void Movement()
     {
-        //if (Input.GetKey(KeyCode.W))
-        //{
-        //    transform.position += transform.forward * ForwardMultiplier * Time.deltaTime;
-        //}
-        //else if (Input.GetKey(KeyCode.S))
-        //{
-        //    transform.position -= transform.forward * BackwardMultiplier * Time.deltaTime;
-        //}
-
-        //if (Input.GetKey(KeyCode.D))
-        //{
-        //    transform.position += transform.right * StrafeMultiplier * Time.deltaTime;
-        //}
-        //else if (Input.GetKey(KeyCode.A))
-        //{
-        //    transform.position -= transform.right * StrafeMultiplier * Time.deltaTime;
-        //}
-
         if (Input.GetKey(KeyCode.W))
         {
-            MovementVectorZ += AccelerationMultiplier * Time.deltaTime;
+            MovementVectorF += AccelerationMultiplier * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.S))
         {
-            MovementVectorZ -= AccelerationMultiplier * Time.deltaTime;
+            MovementVectorF -= AccelerationMultiplier * Time.deltaTime;
         }
-        else if(MovementVectorZ != 0)
+        else if(MovementVectorF != 0)
         {
-            if(Mathf.Abs(MovementVectorZ) < 0.1f)
-                MovementVectorZ = 0;
+            if(Mathf.Abs(MovementVectorF) < 0.1f)
+                MovementVectorF = 0;
             else
-                MovementVectorZ -= Mathf.Sign(MovementVectorZ) * AccelerationMultiplier * 2 * Time.deltaTime;
+                MovementVectorF -= Mathf.Sign(MovementVectorF) * AccelerationMultiplier * 2 * Time.deltaTime;
         }
 
-        MovementVectorZ = Mathf.Clamp(MovementVectorZ, -BackwardMaxSpeed, ForwardMaxSpeed);
+        MovementVectorF = Mathf.Clamp(MovementVectorF, -BackwardMaxSpeed, ForwardMaxSpeed);
 
 
         if (Input.GetKey(KeyCode.D))
         {
-            MovementVectorX += AccelerationMultiplier * Time.deltaTime;
+            MovementVectorS += AccelerationMultiplier * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.A))
         {
-            MovementVectorX -= AccelerationMultiplier * Time.deltaTime;
+            MovementVectorS -= AccelerationMultiplier * Time.deltaTime;
         }
-        else if (MovementVectorX != 0)
+        else if (MovementVectorS != 0)
         {
-            if (Mathf.Abs(MovementVectorX) < 0.1f)
-                MovementVectorX = 0;
+            if (Mathf.Abs(MovementVectorS) < 0.1f)
+                MovementVectorS = 0;
             else
-                MovementVectorX -= Mathf.Sign(MovementVectorX) * AccelerationMultiplier * 2 * Time.deltaTime;
+                MovementVectorS -= Mathf.Sign(MovementVectorS) * AccelerationMultiplier * 2 * Time.deltaTime;
         }
 
-        MovementVectorX = Mathf.Clamp(MovementVectorX, -StrafeMaxSpeed, StrafeMaxSpeed);
+        MovementVectorS = Mathf.Clamp(MovementVectorS, -StrafeMaxSpeed, StrafeMaxSpeed);
 
-        transform.position += transform.forward * MovementVectorZ + transform.right * MovementVectorX;
+        var movement = (transform.forward * MovementVectorF) + (transform.right * MovementVectorS);
+        transform.Translate(movement, Space.World);
+        if(MovementVectorF != 0)
+        {
+            Debug.Log(transform.forward);
+            Debug.Log($"MovementVectorF {MovementVectorF}");
+            Debug.Log($"movement {movement}");
+        }
         //if (Input.GetKey(KeyCode.D))
         //{
         //    transform.position += transform.right * StrafeMultiplier * Time.deltaTime;
