@@ -135,7 +135,7 @@ MonoBehaviour:
   _Rigidbody: {fileID: 0}
   CameraHolder: {fileID: 0}
   AccelerationMultiplier: 0.5
-  JumpForceMultiplier: 200
+  JumpForceMultiplier: 400
   StrafeMaxSpeed: 0.02
   ForwardMaxSpeed: 0.02
   BackwardMaxSpeed: 0.02

@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         _Rigidbody = GetComponent<Rigidbody>();
         CameraHolder = transform.GetChild(0).gameObject;
         GameMaster.Player = this;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
@@ -146,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     private void Interact()
     {
-        if(Input.GetKeyUp(KeyCode.Mouse0))
+        if(Input.GetKeyUp(KeyCode.Mouse0) && Cursor.lockState == CursorLockMode.Locked)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -156,6 +157,13 @@ public class PlayerController : MonoBehaviour
                 if (interactable != null)
                     interactable.Interact();
             }
+        }
+        else if(Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
