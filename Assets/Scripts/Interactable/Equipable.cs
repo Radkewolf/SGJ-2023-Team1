@@ -51,6 +51,7 @@ public class Equipable : InteractableObject
         transform.parent = null;
         _Rigidbody.useGravity = true;
         _Rigidbody.constraints = RigidbodyConstraints.None;
+        gameObject.layer = 0;
     }
 
     private void UpdateState()
