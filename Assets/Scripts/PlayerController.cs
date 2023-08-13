@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         GameMaster.Player = this;
         Cursor.lockState = CursorLockMode.Locked;
         CurrentJumpForce = BaseJumpForceMultiplier;
+        GameMaster.IsDead = false;
     }
 
     void Update()
