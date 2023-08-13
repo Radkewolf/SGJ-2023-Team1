@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,8 +11,6 @@ public class PlayerController : MonoBehaviour
     public GameObject CameraHolder;
     [HideInInspector]
     public GameObject EffectsHolder;
-    [HideInInspector]
-    public bool IsDead;
 
     public GameObject DeadCanvas;
 
@@ -54,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (IsDead)
+        if (GameMaster.IsDead)
             return;
         CalculateMovement();
         Interact();
@@ -72,7 +69,7 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.GetComponent<MeshRenderer>().enabled = true;
         }
 
-        if (collision.gameObject.tag == "Death" && !IsDead)
+        if (collision.gameObject.tag == "Death" && !GameMaster.IsDead)
         {
             Die();
         }
@@ -223,7 +220,7 @@ public class PlayerController : MonoBehaviour
 
     private void Die()
     {
-        IsDead = true;
+        GameMaster.IsDead = true;
         Instantiate(DeadCanvas);
         StartCoroutine(LoadYourAsyncScene());
     }

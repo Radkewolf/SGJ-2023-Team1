@@ -7,4 +7,6 @@ public static class GameMaster
     public static PlayerController Player;
     public static CameraController Camera;
     public static AudioMixer Mixer;
+    public static bool IsDead;
+    public static bool Finished;
 }

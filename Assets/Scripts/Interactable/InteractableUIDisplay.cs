@@ -14,7 +14,7 @@ public class InteractableUIDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameMaster.Player.IsDead)
+        if (GameMaster.IsDead)
             return;
 
         if (Cursor.lockState == CursorLockMode.None)

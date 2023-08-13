@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndScreen : MonoBehaviour
 {
@@ -14,7 +15,10 @@ public class EndScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(GameMaster.Finished && Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -23,11 +27,19 @@ public class EndScreen : MonoBehaviour
         {
             DisplayEndScreen();
             Time.timeScale = 0;
+            GameMaster.IsDead = true;
+            StartCoroutine(DelayForFinish());
         }
     }
 
     private void DisplayEndScreen()
     {
         Instantiate(EndCanvas);
+    }
+
+    IEnumerator DelayForFinish()
+    {
+        yield return new WaitForSeconds(3f);
+        GameMaster.Finished = true;
     }
 }
