@@ -6,6 +6,8 @@ public class StageWall : MonoBehaviour
 {
     private AudioSource Source;
     private bool Activated;
+    public AudioClip Voiceline;
+    public GameObject ClipGameObject;
 
     private void Start()
     {
@@ -24,7 +26,10 @@ public class StageWall : MonoBehaviour
 
     void PlayVoiceLine()
     {
-
+        var go = Instantiate(ClipGameObject);
+        var audio = go.GetComponent<AudioSource>();
+        audio.clip = Voiceline;
+        audio.Play();
     }
 
     void StartEffect()
