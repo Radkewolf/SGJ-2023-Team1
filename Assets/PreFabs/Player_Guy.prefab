@@ -181,6 +181,8 @@ MonoBehaviour:
   ForwardMaxSpeed: 0.1
   BackwardMaxSpeed: 0.1
   LookMultiplier: 400
+  Voiceline: {fileID: 8300000, guid: 4e421cc9dd5b54048b10b9b6c9c69aee, type: 3}
+  ClipGameObject: {fileID: 4281467871914125441, guid: 2d918de012e41114da993982bdcbf062, type: 3}
   ItemPosition: {x: 3.5, y: 10, z: 1}
   Equipment: {fileID: 0}
 --- !u!54 &7966543846960742155

@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public float BackwardMaxSpeed;
     public float LookMultiplier;
 
+    public AudioClip Voiceline;
+    public GameObject ClipGameObject;
+
     public Vector3 ItemPosition;
 
     public Equipable Equipment;
@@ -49,6 +52,7 @@ public class PlayerController : MonoBehaviour
         CurrentJumpForce = BaseJumpForceMultiplier;
         GameMaster.IsDead = false;
         GameMaster.Mixer.StartAudio();
+        PlayVoiceLine();
     }
 
     void Update()
@@ -239,5 +243,13 @@ public class PlayerController : MonoBehaviour
         {
             yield return null;
         }
+    }
+
+    void PlayVoiceLine()
+    {
+        var go = Instantiate(ClipGameObject);
+        var audio = go.GetComponent<AudioSource>();
+        audio.clip = Voiceline;
+        audio.Play();
     }
 }
