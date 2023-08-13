@@ -142,9 +142,9 @@ MonoBehaviour:
   BaseJumpForceMultiplier: 400
   JumpForceMultiplierSpeedIncrease: 100
   MaxJumpForceMultiplier: 800
-  StrafeMaxSpeed: 0.03
-  ForwardMaxSpeed: 0.03
-  BackwardMaxSpeed: 0.03
+  StrafeMaxSpeed: 0.1
+  ForwardMaxSpeed: 0.1
+  BackwardMaxSpeed: 0.1
   LookMultiplier: 400
   ItemPosition: {x: 0.75, y: 0.2, z: 0}
   Equipment: {fileID: 0}

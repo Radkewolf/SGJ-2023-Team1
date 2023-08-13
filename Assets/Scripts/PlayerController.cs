@@ -56,8 +56,13 @@ public class PlayerController : MonoBehaviour
     {
         if (IsDead)
             return;
-        Movement();
+        CalculateMovement();
         Interact();
+    }
+
+    void FixedUpdate()
+    {
+        ExecuteMovement();
     }
 
     void OnCollisionEnter(Collision collision)
@@ -93,7 +98,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    private void Movement()
+    private void CalculateMovement()
     {
         if (Input.GetKey(KeyCode.W))
         {
@@ -132,14 +137,6 @@ public class PlayerController : MonoBehaviour
 
         MovementVectorS = Mathf.Clamp(MovementVectorS, -StrafeMaxSpeed, StrafeMaxSpeed);
 
-        var movement = (transform.forward * MovementVectorF) + (transform.right * MovementVectorS);
-        transform.Translate(movement, Space.World);
-        if (MovementVectorF != 0)
-        {
-            //Debug.Log(transform.forward);
-            //Debug.Log($"MovementVectorF {MovementVectorF}");
-            //Debug.Log($"movement {movement}");
-        }
         //if (Input.GetKey(KeyCode.D))
         //{
         //    transform.position += transform.right * StrafeMultiplier * Time.deltaTime;
@@ -178,6 +175,18 @@ public class PlayerController : MonoBehaviour
 
             currentRotation.x = Mathf.Clamp(currentRotation.x, 0, 45);
             CameraHolder.transform.eulerAngles = currentRotation;
+        }
+    }
+
+    private void ExecuteMovement()
+    {
+        var movement = (transform.forward * MovementVectorF) + (transform.right * MovementVectorS);
+        transform.Translate(movement, Space.World);
+        if (MovementVectorF != 0)
+        {
+            //Debug.Log(transform.forward);
+            //Debug.Log($"MovementVectorF {MovementVectorF}");
+            //Debug.Log($"movement {movement}");
         }
     }
 
