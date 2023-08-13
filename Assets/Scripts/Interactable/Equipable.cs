@@ -37,7 +37,7 @@ public class Equipable : InteractableObject
         if (interactable != null)
         {
             DoAnimation();
-            interactable.transform.localScale *= 0.95f;
+            interactable.transform.localScale *= 0.99f;
             UpdateState();
             if(State == 0)
             {
