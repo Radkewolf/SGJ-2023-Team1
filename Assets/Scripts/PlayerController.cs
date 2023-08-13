@@ -60,6 +60,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (GameMaster.IsDead)
+            return;
         ExecuteMovement();
     }
 

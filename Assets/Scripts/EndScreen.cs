@@ -26,7 +26,6 @@ public class EndScreen : MonoBehaviour
         if (other.gameObject.name == "Player")
         {
             DisplayEndScreen();
-            Time.timeScale = 0;
             GameMaster.IsDead = true;
             StartCoroutine(DelayForFinish());
         }
