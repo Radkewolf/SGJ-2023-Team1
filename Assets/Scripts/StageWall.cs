@@ -14,7 +14,7 @@ public class StageWall : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(!Activated && other.gameObject.name == "Player")
+        if(!Activated && other.gameObject.tag == "Player")
         {
             Activated = true;
             StartEffect();

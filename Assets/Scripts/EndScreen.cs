@@ -23,7 +23,7 @@ public class EndScreen : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.tag == "Player")
         {
             DisplayEndScreen();
             GameMaster.IsDead = true;
