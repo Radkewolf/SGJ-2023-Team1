@@ -22,11 +22,13 @@ public class Equipable : InteractableObject
     {
         transform.parent = GameMaster.Player.transform;
         transform.localPosition = GameMaster.Player.ItemPosition;
+        transform.localRotation = Quaternion.Euler(0, -90, 0);
         //_Collider.enabled = false;
         GameMaster.Player.Equipment = this;
         IsEquipped = true;
         _Rigidbody.useGravity = false;
         _Rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+        _Collider.enabled = false;
     }
 
     public void ItemAction()
@@ -57,6 +59,7 @@ public class Equipable : InteractableObject
         _Rigidbody.useGravity = true;
         _Rigidbody.constraints = RigidbodyConstraints.None;
         gameObject.layer = 0;
+        _Collider.enabled = true;
     }
 
     private void UpdateState()

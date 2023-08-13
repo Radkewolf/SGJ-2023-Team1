@@ -181,7 +181,7 @@ MonoBehaviour:
   ForwardMaxSpeed: 0.1
   BackwardMaxSpeed: 0.1
   LookMultiplier: 400
-  ItemPosition: {x: 0.75, y: 2, z: 0}
+  ItemPosition: {x: 3.5, y: 10, z: 1}
   Equipment: {fileID: 0}
 --- !u!54 &7966543846960742155
 Rigidbody:
