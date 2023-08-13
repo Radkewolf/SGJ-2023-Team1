@@ -35,7 +35,7 @@ public class IntroAnimation : MonoBehaviour
     IEnumerator FadeOut()
     {
         var color = Black.color;
-        for (float alpha = 0f; alpha < 1f; alpha += 0.1f)
+        for (float alpha = 0f; alpha <= 1f; alpha += 0.1f)
         {
             color.a = alpha;
             Black.color = color;
