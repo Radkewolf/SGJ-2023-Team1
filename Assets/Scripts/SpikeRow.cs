@@ -35,6 +35,7 @@ public class SpikeRow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if((transform.position.y >= UpperEnd + DefaultPos.y && Direction > 0) ||
             (transform.position.y <= LowerEnd + DefaultPos.y && Direction < 0))
         {
@@ -43,7 +44,7 @@ public class SpikeRow : MonoBehaviour
 
         transform.Translate(0, Speed * Direction * Time.deltaTime, 0);
 
-        if (!LowerMiddle)
+        if (!LowerMiddle || GameMaster.Player == null)
             return;
 
         if(SpikesLowered)
