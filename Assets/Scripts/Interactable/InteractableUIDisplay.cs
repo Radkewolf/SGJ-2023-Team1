@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class InteractableUIDisplay : MonoBehaviour
 {
-    private Image _Image;
+    private RawImage _Image;
     void Start()
     {
-        _Image = GetComponent<Image>();
+        _Image = GetComponent<RawImage>();
     }
 
     // Update is called once per frame
@@ -28,11 +28,11 @@ public class InteractableUIDisplay : MonoBehaviour
             var interactable = InteractableObject.RaycastForObject();
             if (interactable != null)
             {
-                _Image.color = Color.blue;
+                _Image.enabled = true;
             }
             else
             {
-                _Image.color = Color.white;
+                _Image.enabled = false;
             }
         }
     }
