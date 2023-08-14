@@ -15,7 +15,8 @@ public class IntroAnimation : MonoBehaviour
     {
         Time.timeScale = 0.4f;
         Body.AddTorque(Torque);
-        StartCoroutine(FadeIn());
+        StartCoroutine(FadeIn()); 
+        GameMaster.Finished = false;
     }
 
     IEnumerator FadeIn()

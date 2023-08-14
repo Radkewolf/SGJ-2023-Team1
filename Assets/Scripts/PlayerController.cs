@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public GameObject EffectsHolder;
 
     public GameObject DeadCanvas;
+    public PickUpable Interactable;
 
     [Range(0f, 1f)]
     public float AccelerationMultiplier;
@@ -199,7 +200,11 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Mouse0) && Cursor.lockState == CursorLockMode.Locked)
         {
-            if(Equipment != null)
+            if(Interactable != null)
+            {
+                Interactable.Interact();
+            }
+            else if(Equipment != null)
             {
                 Equipment.ItemAction();
             }

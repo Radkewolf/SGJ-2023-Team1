@@ -21,6 +21,7 @@ public class PickUpable : InteractableObject
     {
         if (PickedUp)
         {
+            GameMaster.Player.Interactable = null;
             transform.parent = null;
             PickedUp = false;
             //_Rigidbody.isKinematic = false;
@@ -30,6 +31,7 @@ public class PickUpable : InteractableObject
         }
         else
         {
+            GameMaster.Player.Interactable = this;
             transform.parent = GameMaster.Player.CameraHolder.transform;
             PickedUp = true;
             //_Rigidbody.isKinematic = true;

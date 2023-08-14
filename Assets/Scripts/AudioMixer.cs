@@ -26,13 +26,27 @@ public class AudioMixer : MonoBehaviour
     {
         Audio.Stop();
         CurrentTrack++;
-        if(CurrentTrack == 1 || CurrentTrack == 3)
+        if (CurrentTrack == 4)
+            CurrentTrack = 3;
+        if (CurrentTrack == 0)
         {
-            Audio.volume = 0.4f;
+            Audio.volume = 0.2f;
         }
-        else
+        else if (CurrentTrack == 1)
         {
-            Audio.volume = 0.9f;
+            Audio.volume = 0.1f;
+        }
+        else if ( CurrentTrack == 2)
+        {
+            Audio.volume = 0.2f;
+        }
+        else if (CurrentTrack == 3)
+        {
+            Audio.volume = 0.2f;
+        }
+        else if (CurrentTrack == 4)
+        {
+            Audio.volume = 0f;
         }
         Audio.clip = Songs[CurrentTrack];
         Audio.Play();
